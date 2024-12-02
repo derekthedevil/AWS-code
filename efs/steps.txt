@@ -1,0 +1,38 @@
+# AWS EFS Practice Guide
+
+## Prerequisites
+- Two EC2 instances running Amazon Linux
+- Proper security groups configured for EFS
+- AWS CLI configured
+
+## Steps
+
+1. Install EFS Utils on Both EC2 Instances
+   ```shell
+   sudo yum install -y amazon-efs-utils
+   ```
+
+2. Create Mount Point on Both Instances
+   ```shell
+   sudo mkdir /efs
+   ```
+
+3. Mount EFS
+   ```shell
+   sudo mount -t efs fs-yourid:/ /efs
+   ```
+
+4. Test File Sharing
+   - On Instance 1:
+     ```shell
+     echo "Hello from Instance 1" > /efs/test.txt
+     ```
+   - On Instance 2:
+     ```shell
+     cat /efs/test.txt
+     ```
+
+5. Verify Shared Access
+   - Files created in /efs on either instance should be visible on both instances
+
+Reference: See lines 1-6 in efs/efs.sh

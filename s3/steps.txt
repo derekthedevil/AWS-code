@@ -1,0 +1,37 @@
+# S3 Basic Operations with CORS Practice Guide
+
+## Prerequisites
+- AWS account with S3 permissions
+- Basic understanding of HTML and CORS
+
+## Steps
+
+1. Create S3 Buckets
+   - Create first bucket for website hosting
+   - Create second bucket for CORS demo
+
+2. Upload Website Files
+   ```html
+   Reference to s3/index.html
+   startLine: 1
+   endLine: 25
+   ```
+
+3. Configure CORS
+   Create CORS configuration:
+   ```json
+   Reference to s3/CORS_CONFIG.json
+   startLine: 1
+   endLine: 15
+   ```
+
+4. Enable Static Website Hosting
+   - Select first bucket
+   - Properties → Static website hosting
+   - Set index.html as index document
+   - Note the website endpoint
+
+5. Test CORS Setup
+   - Access the website endpoint
+   - Check browser console for CORS errors
+   - Verify cross-origin requests work

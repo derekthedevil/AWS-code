@@ -1,0 +1,44 @@
+# AWS CloudFormation Practice Guide
+
+## Prerequisites
+- AWS CLI installed and configured
+- AWS account with CloudFormation permissions
+
+## Steps
+
+1. Basic EC2 Instance Template
+   Create a file named `0-just-ec2.yaml`:
+   ```yaml
+   Reference to cloudformation/0-just-ec2.yaml
+   startLine: 1
+   endLine: 9
+   ```
+
+2. Advanced EC2 with Security Groups Template
+   Create a file named `1-ec2-with-sg-eip.yaml`:
+   ```yaml
+   Reference to cloudformation/1-ec2-with-sg-eip.yaml
+   startLine: 1
+   endLine: 53
+   ```
+
+3. Deploy Basic Stack
+   ```shell
+   aws cloudformation create-stack --stack-name basic-ec2 --template-body file://0-just-ec2.yaml
+   ```
+
+4. Deploy Advanced Stack
+   ```shell
+   aws cloudformation create-stack --stack-name advanced-ec2 --template-body file://1-ec2-with-sg-eip.yaml --parameters ParameterKey=SecurityGroupDescription,ParameterValue="My security group"
+   ```
+
+5. Monitor Stack Creation
+   ```shell
+   aws cloudformation describe-stacks --stack-name basic-ec2
+   ```
+
+6. Clean Up
+   ```shell
+   aws cloudformation delete-stack --stack-name basic-ec2
+   aws cloudformation delete-stack --stack-name advanced-ec2
+   ```

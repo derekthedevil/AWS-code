@@ -1,0 +1,39 @@
+# AWS Systems Manager Parameter Store Practice Guide
+
+## Prerequisites
+- AWS CLI installed and configured
+- AWS account with SSM permissions
+
+## Steps
+
+1. CLI Operations
+   ```shell
+   Reference to ssm/cli.sh
+   startLine: 1
+   endLine: 11
+   ```
+
+2. Create Lambda Function
+   Create a file named `handler.py`:
+   ```python
+   Reference to ssm/handler.py
+   startLine: 1
+   endLine: 13
+   ```
+
+3. Set Up Parameters
+   ```shell
+   aws ssm put-parameter --name "/my-app/dev/db-url" --value "mysql://localhost:3306/dev" --type String
+   aws ssm put-parameter --name "/my-app/dev/db-password" --value "mydevpassword" --type SecureString
+   ```
+
+4. Test Parameter Retrieval
+   ```shell
+   aws ssm get-parameters --names "/my-app/dev/db-url" "/my-app/dev/db-password" --with-decryption
+   ```
+
+5. Clean Up
+   ```shell
+   aws ssm delete-parameter --name "/my-app/dev/db-url"
+   aws ssm delete-parameter --name "/my-app/dev/db-password"
+   ```

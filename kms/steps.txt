@@ -1,0 +1,33 @@
+# AWS KMS Encryption/Decryption Practice Guide
+
+## Prerequisites
+- AWS CLI installed and configured
+- AWS account with KMS permissions
+
+## Steps
+
+1. Create Test File
+   Create a file named 'ExampleSecretFile.txt' with sensitive content
+
+2. Configure KMS
+   - Create KMS key in AWS Console
+   - Create alias 'tutorial'
+   - Note the key ID
+
+3. Encryption Process
+   ```shell
+   Reference to kms/kms-demo-cli.sh
+   startLine: 2
+   endLine: 8
+   ```
+
+4. Decryption Process
+   ```shell
+   Reference to kms/kms-demo-cli.sh
+   startLine: 13
+   endLine: 20
+   ```
+
+5. Verify Results
+   - Compare original and decrypted files
+   - They should match exactly

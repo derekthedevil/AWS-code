@@ -1,0 +1,36 @@
+# AWS S3 Advanced Features Practice Guide
+
+## Prerequisites
+- AWS CLI installed and configured
+- AWS account with S3 permissions
+
+## Steps
+
+1. MFA Delete Setup
+   ```shell
+   Reference to s3-advanced/mfa-delete.sh
+   startLine: 1
+   endLine: 10
+   ```
+
+2. Pre-signed URLs
+   ```shell
+   Reference to s3-advanced/pre-signed-url.sh
+   startLine: 3
+   endLine: 13
+   ```
+
+3. S3 Access Logs Analysis with Athena
+   a. Create Database and Table:
+   ```sql
+   Reference to s3-advanced/athena-s3-access-logs.sql
+   startLine: 1
+   endLine: 34
+   ```
+
+   b. Query Examples:
+   ```sql
+   Reference to s3-advanced/athena-s3-access-logs.sql
+   startLine: 37
+   endLine: 41
+   ```

@@ -1,0 +1,48 @@
+# AWS Kinesis Data Streams Practice
+
+## Prerequisites
+- AWS CLI installed and configured
+- AWS account with Kinesis permissions
+
+## Steps
+
+1. Verify AWS CLI Version
+   ```shell
+   aws --version
+   ```
+
+2. Create Kinesis Stream
+   ```shell
+   aws kinesis create-stream --stream-name test --shard-count 1
+   ```
+
+3. Producer Operations
+   For AWS CLI v2:
+   ```shell
+   aws kinesis put-record --stream-name test --partition-key user1 --data "user signup" --cli-binary-format raw-in-base64-out
+   ```
+   For AWS CLI v1:
+   ```shell
+   aws kinesis put-record --stream-name test --partition-key user1 --data "user signup"
+   ```
+
+4. Consumer Operations
+   a. Describe the stream:
+   ```shell
+   aws kinesis describe-stream --stream-name test
+   ```
+   
+   b. Get shard iterator:
+   ```shell
+   aws kinesis get-shard-iterator --stream-name test --shard-id shardId-000000000000 --shard-iterator-type TRIM_HORIZON
+   ```
+
+   c. Get records:
+   ```shell
+   aws kinesis get-records --shard-iterator <shard-iterator-value>
+   ```
+
+5. Clean Up
+   ```shell
+   aws kinesis delete-stream --stream-name test
+   ```

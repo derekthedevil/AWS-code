@@ -1,0 +1,32 @@
+# Route53 with EC2 Practice Guide
+
+## Prerequisites
+- AWS account with Route53 and EC2 permissions
+- Registered domain name in Route53
+
+## Steps
+
+1. Create EC2 User Data Script
+   ```shell
+   Reference to route53/user-data.sh
+   startLine: 1
+   endLine: 14
+   ```
+
+2. Launch EC2 Instances
+   - Launch EC2 instances in different AZs
+   - Use the user data script above
+   - Configure security group for HTTP (port 80)
+
+3. Create Route53 Records
+   - Go to Route53 console
+   - Select your hosted zone
+   - Create record set:
+     - Simple routing: Single EC2 instance
+     - Weighted routing: Multiple EC2 instances
+     - Latency routing: EC2 instances in different regions
+
+4. Test Setup
+   - Access your domain
+   - Verify hostname and AZ information displays
+   - For weighted/latency routing, test multiple times

@@ -1,0 +1,39 @@
+# EC2 Fundamentals Practice Guide
+
+## Prerequisites
+- AWS account with EC2 permissions
+- Basic understanding of Linux commands
+
+## Steps
+
+## use putty( google how to use putty) to connect to ec2 instance
+
+1. Create User Data Script
+   Create a file named `ec2-user-data.sh`:
+   ```shell
+   Reference to ec2-fundamentals/ec2-user-data.sh
+   startLine: 1
+   endLine: 8
+   ```
+
+2. Launch EC2 Instance
+   - Go to EC2 Console
+   - Click "Launch Instance"
+   - Choose Amazon Linux 2 AMI
+   - Select instance type (t2.micro)
+   - In Advanced Details, paste the user data script
+   - Configure security group for HTTP (port 80)
+   - Launch instance
+
+3. Access Web Server
+   - Wait for instance to be running
+   - Access using public IP: http://<public-ip>
+   - Should see the hostname message
+
+4. Metadata Access (Optional)
+   SSH into instance and run:
+   ```shell
+   Reference to cli/ec2-metadata.sh
+   startLine: 1
+   endLine: 3
+   ```

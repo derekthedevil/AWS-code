@@ -1,0 +1,82 @@
+# Step-by-Step Guide to Deploy an AWS Lambda Function
+
+## Prerequisites
+- An AWS account
+- Basic knowledge of AWS services
+- AWS CLI installed and configured on your machine
+
+## Steps
+
+### Step 1: Create a Lambda Function
+
+1. **Log in to AWS Management Console**
+   - Go to [AWS Management Console](https://aws.amazon.com/console/).
+   - Log in with your AWS credentials.
+
+2. **Navigate to AWS Lambda**
+   - In the AWS Management Console, search for "Lambda" in the search bar.
+   - Click on "Lambda" to open the AWS Lambda service.
+
+3. **Create a New Function**
+   - Click on the "Create function" button.
+   - Choose "Author from scratch".
+   - Enter a function name, e.g., `HelloLambda`.
+   - Choose the runtime as `Python 3.x` (ensure it matches the version used in your code).
+   - Set the execution role:
+     - Choose "Create a new role with basic Lambda permissions" or select an existing role with the necessary permissions.
+   - Click "Create function".
+
+### Step 2: Add Code to the Lambda Function
+
+1. **Edit the Function Code**
+   - In the function's configuration page, scroll down to the "Function code" section.
+   - Replace the default code with your provided code:
+     ```python
+     import json
+
+     def lambda_handler(event, context):
+         body = "Hello from Lambda!"
+         statusCode = 200
+         return {
+             "statusCode": statusCode,
+             "body": json.dumps(body),
+             "headers": {
+                 "Content-Type": "application/json"
+             }
+         }
+     ```
+
+2. **Save the Changes**
+   - Click on the "Deploy" button to save and deploy your changes.
+
+### Step 3: Test the Lambda Function
+
+1. **Create a Test Event**
+   - Click on the "Test" button.
+   - Configure a new test event:
+     - Enter an event name, e.g., `TestEvent`.
+     - Use the default template or provide a custom JSON input.
+   - Click "Create".
+
+2. **Run the Test**
+   - Click on the "Test" button again to execute the function with the test event.
+   - Check the execution results and logs to ensure the function runs as expected.
+
+### Step 4: Set Up API Gateway (Optional)
+
+1. **Navigate to API Gateway**
+   - In the AWS Management Console, search for "API Gateway".
+   - Click on "API Gateway" to open the service.
+
+2. **Create a New API**
+   - Click on "Create API".
+   - Choose "HTTP API" or "REST API" based on your requirements.
+   - Follow the prompts to set up the API and integrate it with your Lambda function.
+
+3. **Deploy the API**
+   - Deploy the API to a stage.
+   - Note the endpoint URL to test your Lambda function via HTTP requests.
+
+### Step 5: Clean Up Resources (Optional)
+
+- If you no longer need the Lambda function or API, consider deleting them to avoid incurring charges.
